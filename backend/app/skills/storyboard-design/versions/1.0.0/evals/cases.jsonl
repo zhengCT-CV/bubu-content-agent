@@ -1,0 +1,3 @@
+{"id":"story-01","input":{"topic":"替同事收拾烂摊子"},"assert":{"panel_range":[6,10],"sequential_indices":true,"has_cover":true}}
+{"id":"story-02","input":{"topic":"下班后沉默"},"assert":{"character_continuity":true,"has_interaction_question":true}}
+

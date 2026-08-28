@@ -1,0 +1,7 @@
+- issue: 道具在第 3 格消失、第 4 格突然又出现
+  severity: blocking
+  suggestion: 明确第 3 格人物将道具放入包中，或删除第 4 格依赖该道具的动作
+- issue: 结尾只有“所以我们要勇敢做自己”
+  severity: warning
+  suggestion: 用一个具体选择或回扣开头的动作替代总结口号
+

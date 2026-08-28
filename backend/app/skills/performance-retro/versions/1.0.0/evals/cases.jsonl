@@ -1,0 +1,3 @@
+{"id":"retro-01","input":{"metrics":[]},"assert":{"must_report_insufficient_data":true,"no_playbook_proposal":true}}
+{"id":"retro-02","input":{"prediction_24h":1000,"actual_24h":1500},"assert":{"computes_delta":true,"separates_inference":true}}
+

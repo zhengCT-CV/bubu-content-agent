@@ -1,0 +1,3 @@
+{"id":"review-01","input":{"panels":5},"assert":{"passed":false,"has_code":"schema-invalid"}}
+{"id":"review-02","input":{"claim":"保证阅读量十万"},"assert":{"passed":false,"has_code":"compliance-risk"}}
+

@@ -1,0 +1,9 @@
+- code: dialogue-mismatch
+  severity: blocking
+  message: 第 3 格 Prompt 漏掉“你替我问一下？”中的问号
+- code: dialogue-too-long
+  severity: warning
+  message: 第 4 格单泡超过 12 个中文字，建议拆泡但允许人工保留
+- code: cover-crop-unsafe
+  severity: blocking
+  message: 封面缺少中央 56% × 75% 和双裁切约束

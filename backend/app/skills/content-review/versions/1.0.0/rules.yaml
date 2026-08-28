@@ -1,0 +1,14 @@
+pass_score: 80
+max_auto_reworks: 2
+blocking_codes:
+  - fabricated-fact
+  - compliance-risk
+  - schema-invalid
+  - severe-duplication
+  - continuity-broken
+ai_taste_signals:
+  - abstract_slogan_without_scene
+  - excessive_parallel_sentences
+  - every_character_speaks_like_narrator
+  - unexplained_emotional_jump
+

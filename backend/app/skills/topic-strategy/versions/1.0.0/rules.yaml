@@ -1,0 +1,20 @@
+candidate_count: 3
+duplicate_dimensions:
+  - theme
+  - relationship
+  - conflict
+  - emotion_curve
+  - ending_mechanism
+thresholds:
+  blocking_duplicate_risk: 80
+  minimum_predicted_strength: 55
+evidence_priority:
+  metrics: 1.0
+  weekly_review: 0.9
+  article_record: 0.8
+  playbook: 0.7
+forbidden:
+  - fabricated_metrics
+  - three_title_variants_of_same_story
+  - unsupported_guaranteed_performance
+

@@ -1,0 +1,7 @@
+import { BookCheck, X } from "lucide-react";
+import { Badge, Button, Card } from "../../components/ui";
+
+export function KnowledgeGate({ retro, pending, onResume }: { retro: { verdict: string; knowledge_proposals: Array<{ target: string; heading: string; markdown: string }> }; pending: boolean; onResume: (payload: Record<string, unknown>) => void }) {
+  return <section><div className="mb-5"><p className="label">Human gate 04</p><h2 className="mt-1 text-2xl font-bold">复盘与知识写回审批</h2><p className="mt-2 text-sm text-slate-500">这里批准后才会调用 MCP 写 Markdown；原始 Excel/CSV 永远不会修改。</p></div><Card><p className="text-lg font-semibold leading-8">{retro.verdict}</p><div className="mt-5 space-y-3">{retro.knowledge_proposals.map((proposal, index) => <div key={`${proposal.target}-${index}`} className="rounded-2xl border border-sage-100 bg-white/60 p-4"><div className="flex items-center gap-2"><Badge>{proposal.target}</Badge><h3 className="font-semibold">{proposal.heading}</h3></div><p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-600">{proposal.markdown}</p></div>)}</div><div className="mt-5 flex flex-wrap justify-end gap-2"><Button variant="ghost" disabled={pending} onClick={() => onResume({ decision: "reject" })}><X className="h-4 w-4" />本轮不写回</Button><Button disabled={pending} onClick={() => onResume({ decision: "approve", state_patch: { proposal_indexes: retro.knowledge_proposals.map((_, index) => index) } })}><BookCheck className="h-4 w-4" />批准全部提案</Button></div></Card></section>;
+}
+

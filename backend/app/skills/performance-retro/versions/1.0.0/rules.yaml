@@ -1,0 +1,15 @@
+milestones_hours: [24, 48]
+matching_tolerance_hours: 3
+knowledge_promotion:
+  article_record_min_articles: 1
+  weekly_review_min_articles: 2
+  playbook_min_articles: 3
+required_distinctions:
+  - fact
+  - inference
+  - hypothesis
+forbidden:
+  - conclusion_without_real_metrics
+  - single_article_to_playbook_without_multi_article_evidence
+  - changing_immutable_prediction
+

@@ -1,0 +1,18 @@
+panel_count: {min: 6, max: 10}
+brand_lock: true
+brand_characters:
+  Yier: a small white panda-like bear with black ears and black eye patches
+  Bubu: a small round brown bear
+dialogue:
+  structured: true
+  exact_text_required: true
+  recommended_bubble_characters: 12
+continuity:
+  require_handoff_card: true
+  require_time_anchor: true
+  require_environment_baseline: true
+  require_prop_tracking: true
+  require_timeline: true
+camera:
+  forbid_consecutive_identical: true
+  six_plus_require: [close-up, medium_or_medium-wide, alternate_angle_or_prop_closeup]

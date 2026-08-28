@@ -1,0 +1,4 @@
+{"id":"review-11-brand","assert":{"humanized_brand_character":"blocking"}}
+{"id":"review-11-dialogue-exact","assert":{"missing_character_or_punctuation":"blocking"}}
+{"id":"review-11-dialogue-long","assert":{"over_12":"warning","passed_may_be_true":true}}
+{"id":"review-11-cover","assert":{"missing_dual_crop_clause":"blocking"}}

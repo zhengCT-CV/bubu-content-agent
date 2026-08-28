@@ -1,0 +1,5 @@
+{"id":"visual-11-speech","assert":{"exact_chinese_dialogue":true,"speaker_tail":true,"full_bleed":true}}
+{"id":"visual-11-narration","assert":{"borderless_narration":true,"panel_ratio":"4:3"}}
+{"id":"visual-11-silent","assert":{"no_unrequested_text":true}}
+{"id":"visual-11-cover","assert":{"cover_ratio":"16:9","crop_safe":["1:1","2.35:1"],"no_text":true}}
+{"id":"visual-11-time","assert":{"timeline_monotonic_check":true,"no_readable_time_by_default":true}}

@@ -1,0 +1,3 @@
+{"id":"topic-01","input":{"inspiration":"总替同事收拾烂摊子"},"assert":{"candidate_count":3,"max_duplicate_risk":79,"distinct_mechanisms":true}}
+{"id":"topic-02","input":{"inspiration":"回家后不想说话"},"assert":{"candidate_count":3,"uses_only_known_evidence":true}}
+

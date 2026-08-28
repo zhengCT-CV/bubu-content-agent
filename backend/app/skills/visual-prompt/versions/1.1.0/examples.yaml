@@ -1,0 +1,11 @@
+- case: speech
+  input: {speaker: Yier, kind: speech, text: "你替我问一下？"}
+  must_include: [exact simplified Chinese text, speech bubble tail clearly points to Yier]
+- case: narration
+  input: {kind: narration, text: "有些安全感很小。"}
+  must_include: [borderless floating simplified Chinese text]
+- case: no_dialogue
+  input: {dialogue_items: []}
+  must_exclude: [speech bubble, rendered text]
+- case: cover
+  must_include: [16:9, centered 1:1 crop, centered 2.35:1 crop, no rendered text]

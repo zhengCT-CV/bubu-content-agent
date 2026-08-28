@@ -1,0 +1,4 @@
+- panel: 角色在深夜办公室盯着未读消息
+  include: [character_anchor, phone_prop, tired_expression, medium_close_up, night_lighting, speech_bubble_space]
+  exclude: [rendered_chinese_dialogue, new_character]
+

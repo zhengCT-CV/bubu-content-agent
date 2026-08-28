@@ -1,0 +1,3 @@
+{"id":"visual-01","input":{"panel_count":6},"assert":{"prompt_count":6,"language":"en","has_character_bible":true}}
+{"id":"visual-02","input":{"cover":"双人对话"},"assert":{"mentions_safe_area":true,"forbids_readable_text":true}}
+

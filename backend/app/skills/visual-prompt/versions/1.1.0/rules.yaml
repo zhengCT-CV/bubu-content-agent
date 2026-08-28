@@ -1,0 +1,93 @@
+language: en
+target_model: Nano Banana 2
+generate_images: false
+panel_mapping: one_to_one
+panel_aspect_ratio: "4:3"
+optional_panel_aspect_ratio: "1:1"
+cover_aspect_ratio: "16:9"
+style_prefix: >-
+  Masterpiece webcomic illustration, 8k, cute healing chibi comic style, thick uniform clean dark outlines, flat pastel colors, minimal soft cel shading, large round heads, simple expressive facial features, tiny mouths and oval blush cheeks, short stubby limbs, characters as the dominant focal point, extremely simplified background made of flat pastel shapes, no fine detail, no realistic texture, no photographic depth of field
+full_bleed_clause: >-
+  full-bleed single illustration filling the entire canvas to all four edges, no panel border, no frame line, no white margin, no rounded corner card, no drop shadow around the artwork, no multi-panel grid, one single continuous scene only
+default_time_clause: >-
+  no clocks, no wall clocks, no alarm clocks, no digital clocks, no watches, no visible readable time displays anywhere in the scene
+brand_characters:
+  Yier: a small white panda-like bear with black ears and black eye patches, sensitive, gloomy, expressive and slightly anxious vibe
+  Bubu: a small round brown bear, gentle, warm and slightly dazed vibe
+background:
+  max_recognizable_objects: 2
+  clause: background contains no more than two recognizable scene objects, rendered as extremely simple flat silhouettes, everything else reduced to clean pastel negative space
+subject_ratio:
+  medium-wide: "45-55%"
+  medium: "55-65%"
+  close-up: "65-75%"
+dialogue:
+  policy: render_exact_simplified_chinese
+  recommended_max_characters: 12
+  speech_bubble: simple oval speech bubble with a thin dark outline and plain white fill, clean readable typography, no rectangular caption box, no drop shadow
+  narration: borderless floating simplified Chinese text integrated naturally into clean background negative space
+  placement: allocate clear negative space in the upper or side area for the speech bubble, keeping the bubble away from faces and the key prop
+comic_symbols:
+  angry: [cross-shaped anger vein, tiny steam puffs]
+  irritable: [tiny cartoon flame, small lightning bolts]
+  crying: [large cartoon tears, trembling mouth]
+  warm: [small pink hearts, four-point sparkles]
+  confused: [floating question mark]
+  surprised: [bold exclamation mark]
+  awkward: [single sweat drop, three floating dots]
+  max_types_per_panel: 2
+time_lighting:
+  night: nighttime, dark sky outside the window, warm yellow indoor lamplight, cozy evening atmosphere
+  early_morning: early morning, pale blue dawn light, soft natural light, quiet fresh atmosphere
+  afternoon: afternoon, soft daylight, gentle warm shadows, relaxed daily atmosphere
+  default_phone: phone screen turned off, facing down, with no readable numbers or digital time
+narrative_mechanisms:
+  comedy: exaggerated expressions and fast rhythm
+  life_observation: fewer symbols, more small actions, props and spatial storytelling
+  character_viewpoint: subjective, semi-subjective or over-the-shoulder camera
+  side_taking_discussion: balanced visual weight between both sides
+  parallel_tracks: visual echoes while each image remains one complete scene
+  visual_device: UI, progress bars or embodied emotion only when explicitly present in the script
+  little_or_no_dialogue: advance through action, distance and eye contact
+  list_format: vary the action or visual focus for every item
+  milestone_confession: soft daily action without static posing
+cover:
+  safe_width_percent: 56
+  safe_height_percent: 75
+  focus_width_percent: 50
+  focus_height_percent: 68
+  expendable_horizontal_percent_each: 22
+  expendable_vertical_percent_each: 12
+  no_text_clause: no rendered text anywhere, no letters, no Chinese characters, no speech bubbles, no logos
+  types:
+    - 对峙反差
+    - 道具特写
+    - 单角色情绪
+    - 双角色互动
+    - 生活场景
+    - 双线视觉
+    - UI / 超现实
+    - 动作瞬间
+    - 温暖同框
+  background_modes:
+    - 品牌纯色型
+    - 正文场景型
+  brand_background_clause: one single flat warm apricot brand-color background filling the entire canvas from edge to edge, seamless and continuous, no gradient, no texture, no vignette
+  scene_background_clause: background contains no more than two recognizable scene objects, rendered as simple flat pastel silhouettes
+  crop_clause: >-
+    This is a 16:9 master cover composition designed to survive both a centered 1:1 crop and a centered 2.35:1 crop. Keep all essential character faces, facial expressions, the main interaction, key hand gestures and the key prop inside the central approximately 56 percent of the canvas width and central 75 percent of the canvas height. Keep the characters as one compact central visual cluster, not spread toward opposite sides. Treat the outer approximately 22 percent on the left and right and the outer approximately 12 percent on the top and bottom as expendable crop zones containing background only. The composition must remain complete and readable after either crop, with no cropped face, missing key prop, severed key gesture or loss of the main joke or emotional interaction. Do not draw crop guides, safe-zone boxes, grids, borders or crop marks.
+reference_priority:
+  - 角色定妆表
+  - 分镜交接卡
+  - 画风参考图
+  - 首格
+  - 上一格
+negative_defaults:
+  - extra character
+  - inconsistent outfit
+  - duplicate character
+  - extra fingers
+  - realistic texture
+  - photographic depth of field
+  - watermark
+  - logo

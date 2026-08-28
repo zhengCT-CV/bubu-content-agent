@@ -1,0 +1,14 @@
+language: en
+generate_images: false
+panel_mapping: one_to_one
+style_prefix: "editorial Chinese webcomic, clean expressive line art, warm muted palette, subtle paper texture, cinematic yet approachable"
+negative_defaults:
+  - unreadable_text
+  - extra_fingers
+  - duplicate_character
+  - inconsistent_outfit
+  - watermark
+  - logo
+cover_safe_area_percent: 70
+dialogue_policy: reserve_space_only
+

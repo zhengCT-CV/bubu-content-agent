@@ -1,0 +1,4 @@
+{"id":"story-11-brand","assert":{"brand_characters_locked":true,"humanized_brand_character":false}}
+{"id":"story-11-handoff","assert":{"complete_handoff_card":true,"timeline_matches_panels":true}}
+{"id":"story-11-dialogue","assert":{"structured_dialogue":true,"exact_text":true,"speaker_required_for_speech":true}}
+{"id":"story-11-camera","assert":{"no_consecutive_identical_camera":true,"camera_variety":true}}

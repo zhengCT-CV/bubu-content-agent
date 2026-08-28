@@ -1,0 +1,4 @@
+- pattern: 六格双角色生活观察
+  beats: [动作钩子, 关系建立, 小冲突, 误解升级, 温暖反转, 互动收束]
+  handoff: [时间锚点, 环境基准, 固定道具, 逐格时间轴, 情绪最高点, 封面简报]
+- anti_pattern: 把布布写成人类，或只有 legacy dialogue 而没有 speaker 和 exact_text

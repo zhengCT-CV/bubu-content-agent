@@ -1,0 +1,20 @@
+panel_count:
+  min: 6
+  max: 10
+required_beats:
+  - hook
+  - setup
+  - escalation
+  - turn
+  - resolution
+  - interaction
+dialogue:
+  maximum_recommended_characters: 28
+  prefer_spoken_language: true
+continuity:
+  require_time_of_day: true
+  require_camera: true
+  require_prop_tracking: true
+cover:
+  avoid_critical_elements_near_edges: true
+

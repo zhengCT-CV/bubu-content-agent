@@ -1,0 +1,18 @@
+pass_score: 80
+max_auto_reworks: 2
+deterministic_blocking_wins: true
+dialogue_over_12_is_warning: true
+blocking_codes:
+  - fabricated-fact
+  - compliance-risk
+  - schema-invalid
+  - severe-duplication
+  - continuity-broken
+  - brand-character-broken
+  - dialogue-mismatch
+  - cover-crop-unsafe
+  - visual-rule-missing
+warning_codes:
+  - dialogue-too-long
+  - inferred-handoff-field
+  - excessive-comic-symbols
