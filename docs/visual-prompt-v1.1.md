@@ -1,55 +1,67 @@
-# Visual Prompt Skill v1.1 学习说明
+# Visual Prompt 版本与校验说明
 
-## 为什么不只修改一段 Prompt
+[项目首页](../README.md) · [实际运行截图](business-workflow.md#视觉交付)
 
-大模型 Prompt 只能提高遵守规则的概率，不能保证中文字和标点逐字正确。因此 v1.1 分为三层：
+## 当前链路
+
+分镜和视觉环节通过结构化交接卡传递角色、环境、时间、道具与叙事信息。当前代码的路径是：
 
 ```text
 Storyboard Agent
-  → 结构化分镜 + handoff_card
-  → Python 确定性输入校验
+  → 分镜审核（Reviewer；v1.1 结合确定性输入校验）
+  → 人工编辑与批准
   → Visual Agent 生成结构化 Prompt 包
-  → Python 确定性输出校验
-  → 独立 LLM Reviewer
-  → 人工审批
+  → Pydantic 解析
+  → 人工确认或局部重生成
 ```
 
-- Agent 负责需要理解剧情的部分，例如构图、情绪和动作降维。
-- Pydantic 负责字段、类型和格数结构。
-- `visual_rules.py` 负责逐字对白、品牌角色、固定条款和裁切规则。
-- 人工审批处理模型仍无法可靠判断的审美与例外。
+需要区分三个层次：
 
-## 修改提示词的位置
+- **已接入**：分镜交接卡补全、分镜输入规则校验、模型输出结构化解析、人工确认。
+- **已有函数和测试，但未接入主图**：`validate_visual_prompts()` 对精确对白、固定画风、角色条款、封面裁切等输出的检查。
+- **当前没有执行**：视觉 Prompt 生成后的独立 LLM Reviewer。主图将 `prompt_review` 置空并直接进入人工确认。
 
-不要覆盖 `1.0.0`。当前版本位于：
+因此，Prompt 中写了约束不意味着代码已经强制保障全部约束。当前不能宣称视觉输出经过“确定性输出校验 + 独立 Reviewer”双重审核。
+
+实现证据：[main_graph.py](../backend/app/graphs/main_graph.py)、[visual_rules.py](../backend/app/domain/visual_rules.py)、[相关测试](../tests/unit/test_visual_rules.py)。
+
+## 版本化文件
+
+v1.1 的业务规则保存在：
 
 ```text
 backend/app/skills/visual-prompt/versions/1.1.0/
-├── SKILL.md       角色、职责和不可越过的边界
-├── prompt.md      模型执行步骤与 Prompt 拼装顺序
-├── rules.yaml     可被代码校验的固定常量
-├── examples.yaml  正例与反例
-└── evals/         Agent 评测案例
+├── SKILL.md
+├── prompt.md
+├── rules.yaml
+├── examples.yaml
+└── evals/
 ```
 
-需要改变固定画风、裁切百分比、角色英文锚点或气泡样式时，复制为 `1.2.0` 后修改 `rules.yaml`，再更新 `manifest.yaml`。普通措辞优化修改新版本的 `prompt.md`。
+修改画风、角色锚点或裁切条款时，应新增版本目录并更新 `manifest.yaml`，不覆盖历史版本。指令、Prompt 和规则共同参与 hash 计算。
 
-## Skill 版本如何冻结
+## 历史运行为什么仍显示 v1.0.0？
 
-新运行在 `initialize` 节点把全部 Skill 当前版本写入 `skill_plan`。后续自动返工、人工重生成、服务重启和 fork 都读取该计划，不会因为 manifest 更新而切换版本。
+新运行在初始化时冻结 `skill_plan`。人工重生成和 Fork 继承该计划，不会因为 manifest 更新而切换到新版本。缺少计划的旧 checkpoint 会结合已记录的版本作兼容处理。
 
-已有 checkpoint 没有 `skill_plan` 时，工作流优先读取已记录的 `skill_versions`；发现旧运行使用 `1.0.0` 后，其余尚未执行的 Skill 也沿用 `1.0.0`。因此升级不会改变历史路线。
+[视觉结果截图](assets/screenshots/visual-prompts.png)与[调用记录截图](assets/screenshots/llm-traces.png)展示的是 v1.0.0 历史运行。其角色描述和文字处理应按该版本理解，不能作为 v1.1 品牌或精确对白规则生效的证据。
 
-## 正文与封面差异
+版本冻结让输入配置可追溯，不保证外部模型重复调用得到完全相同的输出。
 
-- 正文默认 4:3，可以在分镜审批页改为 1:1；中文对白直接进入图片 Prompt。
-- 封面固定 16:9，无任何文字，同时兼容中心 1:1 与 2.35:1 裁切。
-- 参考图只显示准备顺序，不上传、不保存；复制 Prompt 到 Nano Banana 2 后手动添加附件。
+## 正文与封面
 
-## 常见 Reviewer 提示
+- 正文画幅可在分镜审批中选择，视觉包按格组织内容与连续性说明。
+- v1.1 规则要求封面无可绘制文字，并兼顾不同裁切比例；当前还需要人工核对实际输出。
+- 参考图由创作者在外部绘图工具中准备，本项目不上传或保存这些附件，也不生成图片。
 
-- `brand-character-broken`：一二或布布被改成人类，点击“应用固定品牌锚点”。
-- `dialogue-mismatch`：Prompt 与分镜精确中文不同，包括漏标点。
-- `dialogue-too-long`：单泡超过 12 字，只提醒，不阻止人工批准。
-- `timeline-conflict`：逐格时间与交接卡不一致，回到分镜卡修改。
-- `cover-crop-unsafe`：封面缺少中央安全区或双裁切完整条款。
+## 规则提示的含义
+
+| 规则码 | 所在层与当前状态 |
+| --- | --- |
+| `brand-character-broken` | 分镜输入检查中的角色锚点问题 |
+| `timeline-conflict` | 分镜输入检查中的时间信息冲突 |
+| `dialogue-mismatch` | 视觉输出校验函数中的逐字对白检查，未接入主图 |
+| `cover-crop-unsafe` | 视觉输出校验函数中的裁切条款检查，未接入主图 |
+| `dialogue-too-long` | 长对白提示，不等于模型已自动修复文字 |
+
+界面中的时间轴自检与提醒也不应被扩大理解为已经通过全部语义、品牌和视觉规则。
